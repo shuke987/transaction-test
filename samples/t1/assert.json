@@ -1,7 +1,7 @@
 [
   {
     "type": "admin_check",
-    "sql": "admin check table",
+    "sql": "admin check table bank",
     "expect": ""
   },
   {
