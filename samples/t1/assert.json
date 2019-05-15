@@ -7,6 +7,6 @@
   {
     "type": "sql",
     "sql": "SELECT SUM(money) FROM bank AS total",
-    "expect": 1000
+    "expect": "1000"
   }
 ]

@@ -1,0 +1,5 @@
+{
+  "dsn-setup": "root@tcp(127.0.0.1:4000)/?allowNativePasswords=true&maxAllowedPacket=0",
+  "database": "t_99",
+  "dsn": "dsn=root@tcp(127.0.0.1:4000)/t_99?allowNativePasswords=true&maxAllowedPacket=0"
+}
