@@ -1,6 +1,7 @@
 package tests
 
 import (
+	"database/sql"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -9,8 +10,9 @@ var (
 )
 
 type TestCase struct {
-	SQLs [][]string
-	DSN  string
+	SetupSQLs []string
+	SQLs      [][]string
+	DSN       string
 }
 
 func (testCase *TestCase) Load(cfg Config) error {
@@ -18,6 +20,28 @@ func (testCase *TestCase) Load(cfg Config) error {
 }
 
 func (testCase *TestCase) Run() error {
+
+	return nil
+}
+
+func (testCase *TestCase) Setup() error {
+	db, err := sql.Open("mysql", testCase.DSN)
+	if err != nil {
+		log.Error("connect db error ", err)
+		return err
+	}
+	defer func() {
+		_ = db.Close()
+	}()
+
+	log.Info("case setup")
+
+	for _, o := range testCase.SetupSQLs {
+		log.Println("run sql: ", o)
+		if _, err := db.Exec(o); err != nil {
+			return err
+		}
+	}
 
 	return nil
 }

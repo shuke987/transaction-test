@@ -2,11 +2,13 @@
   {
     "type": "admin_check",
     "sql": "admin check table bank",
-    "expect": ""
+    "expect": {}
   },
   {
     "type": "sql",
     "sql": "SELECT SUM(money) FROM bank AS total",
-    "expect": "1000"
+    "expect": {
+      "total": 1000
+    }
   }
 ]

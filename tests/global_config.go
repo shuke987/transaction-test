@@ -50,15 +50,15 @@ func (cfg *GlobalConfig) Setup() error {
 		_ = db.Close()
 	}()
 
-	sql := "DROP DATABASE if EXISTS " + cfg.Database
-	if _, err := db.Exec(sql); err != nil {
-		log.Error("drop db error, %s, %s", sql, err)
+	sqlCmd := "DROP DATABASE if EXISTS " + cfg.Database
+	if _, err := db.Exec(sqlCmd); err != nil {
+		log.Error("drop db error, %s, %s", sqlCmd, err)
 		return err
 	}
 
-	sql = "CREATE DATABASE " + cfg.Database
-	if _, err := db.Exec(sql); err != nil {
-		log.Error("create db error, %s, %s", sql, err)
+	sqlCmd = "CREATE DATABASE " + cfg.Database
+	if _, err := db.Exec(sqlCmd); err != nil {
+		log.Error("create db error, %s, %s", sqlCmd, err)
 		return err
 	}
 
@@ -75,9 +75,9 @@ func (cfg *GlobalConfig) Teardown() error {
 		_ = db.Close()
 	}()
 
-	sql := "DROP DATABASE if EXISTS " + cfg.Database
-	if _, err := db.Exec(sql); err != nil {
-		log.Error("drop db error, %s, %s", sql, err)
+	sqlCmd := "DROP DATABASE if EXISTS " + cfg.Database
+	if _, err := db.Exec(sqlCmd); err != nil {
+		log.Error("drop db error, %s, %s", sqlCmd, err)
 		return err
 	}
 
